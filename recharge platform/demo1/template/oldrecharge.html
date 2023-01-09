@@ -1,0 +1,22 @@
+{% extends 'baseuser.html' %}
+
+{% block userpage %}
+<center><table border=1>
+<tr>
+<th>NAME</th>
+<th>MOBILE NO</th>
+<th>OPERATOR</th>
+<th>PLAN</th>
+</tr>
+{% for i in data  %}
+<tr>
+<td>{{i.bname}}</td>
+<td>{{i.Mno}}</td>
+<td>{{i.OPERATOR}}</td>
+<td>{{i.PLAN}}</td>
+<td>
+</td> 
+</tr>
+{% endfor %}
+</table></center>
+{% endblock userpage %}

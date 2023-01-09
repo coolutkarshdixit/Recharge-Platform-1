@@ -1,0 +1,68 @@
+{% extends 'baseuser.html' %}
+
+{% block userpage %}
+<form action="rechargeadded" method="post">
+    {% csrf_token %}
+<center><table border=1>
+    <tr>
+        <th>NAME</th>
+        <td><input type="text" name="bname" required /></td>
+    </tr>
+    <tr>
+        <th>MOBILE NO</th>
+        <td><input type ="text" name="Mno" required /></td>
+    </tr> 
+    <tr>
+        <th>OPERATOR</th>
+        <td>
+            <select name="OPERATOR">
+                <option >AIRTEL</option>
+                <option >JIO</option>
+                <option >VI</option>
+            </select>
+            
+        </td>
+    </tr>  
+    <tr>
+        <th>PLANS</th>
+        <td>
+            <select name="PLAN">
+                <option >30GB/ 30DAYS</option>
+                <option >40GB/ 30DAYS</option>
+                <option >55GB/ 55DAYS</option>
+                <option >76GB/ 64DAYS</option>
+                <option >84GB/ 84DAYS</option>
+            </select>
+            
+        </td>
+    </tr>   
+    
+    <tr>
+        <th></th>
+        <td><form action="recharge"  method="post">
+            {% csrf_token %}
+            <input type="hidden" value="" name="eid" />
+        <input type="submit" value="Recharge" />
+        </form> </td>
+    </tr> 
+</tr>
+{% for i in data  %}
+<tr>
+<td>{{i.service}}</td>
+<td>{{i.validity}}</td>
+<td>{{i.data}}</td>
+<td>{{i.plan}}</td>
+<td>
+<form action="recharge"  method="post">
+    {% csrf_token %}
+    <input type="hidden" value="" name="eid" />
+
+</form>  
+
+
+</td> 
+</tr>
+{% endfor %}
+</table></center>
+</form>
+{% endblock userpage %}
